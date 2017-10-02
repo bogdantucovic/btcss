@@ -1,0 +1,33 @@
+@if $is-responsive-font-ratio {
+	$font-size-ratio-mobile: 1.2 !global;
+} @else {
+	$font-size-ratio-mobile: 1.33 !global;
+}
+
+$responsive: (
+	mobile: (
+		font-size-ratio: $font-size-ratio-mobile,
+		gutter: $space-1-4-em,
+		breakpoint: 40em 
+	 ),
+	tablet: (
+		font-size-ratio: 1.33,
+		gutter : $space-1-2-em,
+		breakpoint: 62em
+	),
+	desktop: (
+		font-size-ratio: 1.4,
+		gutter: $space-primary-em,
+		breakpoint: 75em
+	 ),
+	widescreen : (
+		font-size-ratio: 1.4,
+		gutter: $space-primary-em,
+		breakpoint: 87em
+	 ),
+	fullhd: (
+		font-size-ratio: 1.5,
+		gutter : $space-primary-em,
+		breakpoint: 87.01em
+	 )
+)!default;

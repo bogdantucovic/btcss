@@ -1,0 +1,53 @@
+@mixin scrollbar($scrollbar-track-background : $text-color) {
+	&::-webkit-scrollbar {
+		width: 0.8em;
+	}
+	&::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-background;
+	}
+	&::-webkit-scrollbar-button {
+		background-color: darken($scrollbar-track-background, 10);
+	}
+}
+
+@mixin cf {
+	&::after {
+		clear: both;
+		display: table;
+	}
+	&::before {
+		display: table;
+	}
+}
+
+@mixin absolute-init {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+@mixin object-init($num, $type: h) {
+
+	@include set-font-size($type, $num);
+
+	padding: $object-padding $object-padding * 2;
+}
+
+@mixin v-center-unknow-height ($pos: relative) {
+	position: $pos;
+	transform: translateY(-50%);
+  top: 50%;
+}
+
+@mixin block-center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin horizontal-vertical-center {
+	left: 50%;
+	transform: translate(-50%,-50%);
+  top: 50%;
+}
+

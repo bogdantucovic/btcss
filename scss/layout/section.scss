@@ -1,0 +1,7 @@
+.section {
+	padding: $space-primary;
+	
+	&.section--large {
+		padding: $space-2-1;
+	}
+}

@@ -1,0 +1,69 @@
+@each $position in top, left, right, bottom {
+
+	.margin-#{$position}-2-1 {
+		margin-#{$position}: $space-2-1-em !important;
+	}
+
+	.margin-#{$position} {
+		margin-#{$position}: $space-primary-em !important;
+	}
+
+	.padding-#{$position}-2-1 {
+		padding-#{$position}: $space-2-1 !important;
+	}
+
+	.padding-#{$position} {
+		padding-#{$position}: $space-primary !important;
+	}
+}
+
+.padding {
+	padding: $space-primary !important;
+}
+
+.padding-2-1 {
+	padding: $space-2-1 !important;
+}
+
+.margin {
+	margin: $space-primary-em !important;
+}
+
+.margin-v {
+	margin: {
+		top: $space-primary-em!important;
+		bottom: $space-primary-em!important;
+	} 
+}
+
+.margin-2-1 {
+	margin: $space-2-1-em !important;
+}
+
+.width-100-1 {
+	width: 100%;
+}
+
+.rounded-merge {
+	@if $is-rounded {
+		:last-child {
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;
+		}
+		:first-child {
+			border-right-style: none;
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+		:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
+	}
+}
+		
+
+
+
+
+
+

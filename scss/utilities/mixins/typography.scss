@@ -1,0 +1,16 @@
+@mixin set-font-size($type, $num) {
+  font-size: get-font-size($type, $num, mobile);
+ 
+  @if $is-responsive-font-ratio {
+
+	  @include tablet {
+	  	font-size: get-font-size($type, $num, tablet);
+	  }
+
+	  @include widescreen {
+	  	font-size: get-font-size($type, $num, widescreen);
+	  }
+
+  }
+
+}

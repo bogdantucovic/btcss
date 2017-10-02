@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title> btcss </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Nav">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+		</script>
+	<link href="dist/css/navPage.css" rel="stylesheet"></head>
+	<body class="theme-modern">
+		
+		<nav class="nav nav--primary nav--h-v" id="nav-main">
+			<div class="nav__header">
+				<button type="button" class="btn btn--primary" 
+					data-target-toggle = '{"target":"#nav-main > ul", "className": "slide-toggle"}'>
+					<i class="material-icons">menu</i>
+				</button>
+			</div>
+			<ul>
+				<li> <a href="index.html" >btcss</a> </li>
+				<li> <a href="button.html" > .btn </a> </li>
+				<li> <a href="columns.html" > .columns </a> </li>
+				<li> <a href="nav.html" > .nav </a> </li>
+				<li> <a href="table.html" > .table </a> </li>
+				<li> <a href="form.html" > .form </a> </li>
+				<li id="theme-change"> <a href="#"> teme </a>
+					<ul class="nav__sub-list">
+						<li><a href="#" data-theme = "theme-fresh"> theme-fresh </a></li>
+						<li><a href="#" data-theme = "theme-modern"> theme-modern </a></li>
+						<li><a href="#" data-theme = "theme-stormy"> theme-stormy </a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+		<div data-calc-flow = '{ "offset":"20px" }' >
+			
+			<nav class="nav nav--positive nav--fixed-top-100-1-v" id="nav-positive">
+				<div class="nav__header">
+					<button type="button" class="btn btn--positive"
+						data-target-toggle = '{"target":"#nav-positive > ul", "className": "slide-toggle"}'>
+							<i class="material-icons">menu</i>
+					</button>
+				</div>
+				<ul>
+					<li> <a href="index.html">btcss</a> </li>
+					<li> <a href="#" > level 1 </a> </li>
+					<li> <a href="#" > level 1</a> </li>
+					<li> <a href="#" > level 1 </a>
+						<ul class="nav__sub-list">
+							<li><a href="#" > level 2</a></li>
+							<li><a href="#" >level 2</a></li>
+							<li><a href="#" >level 2</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+
+			<div data-calc-flow = '{ "offset":"0px", "pos":"left", "calc":"true"  }' id="navs-relative">
+				<div class="section text-align-center">
+					<h2 class="h3">.nav--negative .nav--h-h</h2>
+					<nav class="nav nav--negative nav--h-h" id="nav-negative">
+						<div class="nav__header">
+							<button type="button" class="btn btn--negative"
+								data-target-toggle = '{"target":"#nav-negative > ul", "className": "slide-toggle"}'>
+									<i class="material-icons">menu</i>
+							</button>
+						</div>
+						<ul>
+							<li id="negative-level1"> <a href="#"> level 1 </a>
+								<ul class="nav__sub-list">
+									<li><a href="#" > level 2</a></li>
+									<li id="negative-level2"><a href="#" > level 2 </a> 
+										<ul class="nav__sub-list" >
+											<li> <a href="#"> level 3 </a> </li>
+											<li id="negative-level3"> <a href="#" > level 3 </a> 
+												<ul class="nav__sub-list" >
+													<li> <a href="#"> level 4 </a> </li>
+													<li> <a href="#" > level 4 </a> </li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="#" >level 2</a></li>
+								</ul>
+							</li>
+							<li> <a href="#">level 1</a> </li>
+						</ul>
+					</nav>
+				</div>
+				
+				<div class="section text-align-center">
+					<h2 class="h3">.nav--h-h .nav--primary</h2>
+					<h5>Upotreba grida omogućava stvaranje mega navigacije</h5>
+					<nav class="nav nav--h-h nav--primary" id="nav-mega">
+						<div class="nav__header">
+							<button type="button" class="btn btn--primary" 
+								data-target-toggle = '{"target":"#nav-mega > ul", "className": "slide-toggle"}'>
+								<i class="material-icons">menu</i>
+							</button>
+						</div>
+						<ul>
+							<li id="mega-level1"> <a href="#" > Mega menu </a>
+								<ul class="nav__sub-list columns columns--wrap">
+									<li class="column tablet-4"><a href="#" > mega menu link</a></li>
+									<li class="column tablet-4"><a href="#" >mega menu link</a></li>
+									<li class="column tablet-4"><a href="#" >mega menu link</a></li>
+									<li class="column tablet-4"><a href="#" > mega menu link</a></li>
+									<li class="column tablet-4"><a href="#" >mega menu link</a></li>
+									<li class="column tablet-4"><a href="#" >mega menu link</a></li>
+								</ul>
+								<li id="mega-level2"> <a href="#" > Gallery </a>
+								<ul class="nav__sub-list columns">
+									<li class="column">
+										<a href="#" > 
+											<figure> 
+												<img src="dist/assets/images/img1.jpeg">
+												<figcaption>Gallery img</figcaption>
+											</figure> 
+										</a>
+									</li>
+									<li class="column">
+										<a href="#" > 
+											<figure> 
+												<img src="dist/assets/images/img1.jpeg">
+												<figcaption>Gallery img</figcaption>
+											</figure> 
+										</a>
+									</li>
+									<li class="column">
+										<a href="#" > 
+											<figure> 
+												<img src="dist/assets/images/img1.jpeg">
+												<figcaption>Gallery img</figcaption>
+											</figure> 
+										</a>
+									</li>
+									<li class="column">
+										<a href="#" > 
+											<figure> 
+												<img src="dist/assets/images/img1.jpeg">
+												<figcaption>Gallery img</figcaption>
+											</figure> 
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+			</div>
+
+			<div class="section text-align-center margin-top">
+					<h2 class="h3">nav--h-
+						<span class="tag tag--info color--info"> h </span> |
+						<span class="tag tag--info color--info"> v </span>
+					</h2>
+
+					<nav class="nav nav--info nav--h-v nav--h6" id="nav-info">
+						<div class="nav__header">
+							<button type="button" class="btn btn--info"
+								data-target-toggle = '{"target":"#nav-info > ul", "className": "slide-toggle"}'>
+									<i class="material-icons">menu</i>
+							</button>
+						</div>
+						<ul>
+							<li id="info-level1"> <a href="#" > <span> level 1 </span> </a>
+								<ul class="nav__sub-list">
+									<li><a href="#" > level 2</a></li>
+									<li id="info-level2"><a href="#" > level 2 </a> 
+										<ul class="nav__sub-list nav__sub-list-left">
+											<li> <a href="#"> level 3</a> </li>
+											<li id="info-level3"> <a href="#" > level 3 </a> 
+												<ul class="nav__sub-list nav__sub-list-left">
+													<li> <a href="#"> link level 4 </a> </li>
+													<li> <a href="#" > link level 4 </a> </li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="#" >level 2</a></li>
+								</ul>
+							</li>
+							
+							<li> <a href="#"> <span> level 1 </span> </a> </li>
+							<li> <a href="#" class="btn btn--primary btn--h6">level 1</a> </li>
+							<li class="form-field-h rounded-merge"> 
+								<input type="text" class="input input--h6" placeholder="Input">
+								<input type="submit" class="btn btn--positive btn--h6" >
+							</li>
+							<li> <a href="#"> <span> level 1 </span> </a> </li>
+							<li id="info-level2-1"> <a href="#"> <span>level 1 </span></a> 
+								<ul class="nav__sub-list">
+									<li> <a href="#"> level 2</a> </li>
+									<li id="info-level2-2"> <a href="#" > level 2 </a> 
+										<ul class="nav__sub-list nav__sub-list-right">
+											<li> <a href="#"> level 3 </a> </li>
+											<li> <a href="#" > level 3 </a> </li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+			<footer class="section">
+				<div class="u6 text-align-center">
+					Developed by 
+					<a href="https://www.linkedin.com/in/btucovic/" class="color--positive" target="__blank"> Bogdan Tucović</a>
+				</div>
+			</footer>
+
+	<script type="text/javascript" src="dist/js/navPage.js"></script></body>
+</html>

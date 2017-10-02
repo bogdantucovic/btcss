@@ -1,0 +1,13 @@
+
+@if $is-scrollbar {
+	body { 
+		@include scrollbar;
+	}
+
+	@each $theme in $theme-list {
+		@include themify-single('.theme-#{$theme}.body::-webkit-scrollbar-thumb', (background-color: info), $theme);
+	}
+}
+
+
+

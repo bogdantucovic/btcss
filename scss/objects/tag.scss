@@ -1,0 +1,19 @@
+.tag {
+  border-top: 1px dotted $border-color;
+  border-bottom: 1px dotted $border-color;
+  display: inline-flex;
+  padding: $space-1-4 $space-1-2;
+  & + & {
+    margin-left: $space-1-4-em;
+  }
+}
+
+@each $color in $THEME_COLORS_BASE {
+
+  @include themify('.tag.tag--#{$color}', (
+      border-top-color: #{$color}-dark,
+      border-bottom-color: #{$color}-dark
+    )
+  );
+
+}

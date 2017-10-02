@@ -1,0 +1,31 @@
+@each $position in flex-start, flex-end, center {
+	.align-items-#{$position} {
+		align-items: $position !important;
+	}
+
+	.justify-content-#{$position} {
+		justify-content: $position !important;
+	}
+}
+
+.justify-content-around {
+	justify-content: space-around !important;
+}
+
+.justify-content-between {
+	justify-content: space-between !important;
+}
+
+.float-left {
+	float:left;
+}
+
+.float-right {
+	float:right;
+}
+
+.cf {
+	@include cf;
+}
+
+

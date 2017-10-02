@@ -1,0 +1,236 @@
+$btn-padding: $object-padding !default;
+$btn-active-states: ':hover', '.btn--is-active' , ':active';
+$btn-hovered-dir: ltr, rtl, ttb, btt;
+
+@mixin btn-active-states {
+	@each $state in $btn-active-states {
+		&#{$state} {
+			@content;
+		}
+	}
+}
+
+/**
+ * 
+ *  modifikatore ima smisla koristiti samo za outlined buttons
+ *
+ *  1. right-to-left 
+ *  2. left-to-right
+ *  3. top-to-bottom
+ *  4. bottom-to-top
+ *
+ */
+
+@mixin btn-hovered($btn-color, $btn-after-bg, $direction, $btn-border-color: transparent) {
+	position: relative;
+	&::after {
+		@include border-radius();
+		position: absolute;
+		
+		@if $direction == rtl { /* 1 */
+			right: 0;
+			height: 100%;
+			top: 0;
+			transition-property: width;
+			width: 0;
+		} @else if $direction == ltr { /* 2 */
+			left: 0;
+			height: 100%;
+			top: 0;
+			transition-property: width;
+			width: 0;
+		} @else if $direction == ttb { /* 3 */
+			left: 0;
+			height: 0;
+			top: 0;
+			transition-property: height;
+			width: 100%
+		} @else if $direction == btt { /* 4 */
+			bottom: 0;
+			left: 0;
+			height: 0;
+			transition-property: height;
+			width: 100%;
+		}
+
+		background-color: $btn-after-bg;
+		content: '';
+		transition-duration: 0.35s;
+		transition-timing-function:  ease-in-out;
+		z-index: -1;
+	}
+	&:hover {
+		border-color: transparent;
+		color: $btn-color;
+		&::after {
+			@if $direction == rtl or $direction == ltr   {
+				width: 100%;
+			} @else {
+				height: 100%;
+			} 
+		}
+	}
+}
+
+/**
+ *  ------------------------------------------------------------------
+ *                          MODIFIKATORI BOJA
+ *  ------------------------------------------------------------------
+ */
+
+@each $color in $THEME_COLORS_BASE {
+
+	@include themify('.btn.btn--#{$color}', (
+			background-color: #{$color},
+			color: #{$color}-contrast
+		)
+	);
+
+	@include themify(('.btn.btn--#{$color}:hover' ,
+		'.btn.btn--#{$color}.btn--is-active' , 
+		'.btn.btn-#{$color}:active') , (
+			background-color: #{$color}-dark,
+			color: #{$color}-contrast
+		)
+	);
+
+	@include themify('.btn.btn--#{$color}-outlined', (
+		  border-color: #{$color}, 
+			color: #{$color}
+		)
+	);
+
+	@include themify(('.btn.btn--#{$color}-outlined:hover' ,
+		'.btn.btn--#{$color}-outlined.btn--is-active' , 
+		'.btn.btn--#{$color}-outlined:active'), (
+			border-color: #{$color}-dark,
+			color: #{$color}-dark
+		)
+	);
+
+	@each $state in $btn-active-states, '.btn.btn--#{$color}-outlined' {
+		.btn.btn--#{$color}-outlined#{$state} {
+			background-color: transparent;
+		}
+	}
+
+	@each $theme in $theme-list {
+		@each $dir in $btn-hovered-dir {
+			.theme-#{$theme} .btn--#{$color}-outlined.btn--outlined-hovered-#{$dir} {
+				@include btn-hovered (get-theme-color($theme,#{$color}-contrast), get-theme-color($theme,#{$color}-dark), $dir);
+			}	
+		}
+	}
+}
+
+.btn {
+	@extend %h5;
+	@include border-radius();
+	background-color: $background-color-contrast;
+	border: 1px solid transparent;
+	color: $text-color-contrast;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	font-family: $font-family-primary;
+	padding: $btn-padding;
+ 	transition: 0.2s ease-in-out;
+ 	user-select: none;
+	white-space: nowrap;
+	
+	&:focus {
+		outline: none;
+	}
+
+	@include btn-active-states {
+		background-color: $background-color-contrast-dark;
+	}
+
+	/**
+	 *  modifiikatori stanja globalno imaju infix --is
+	 */
+	&.btn--is-disabled {
+		pointer-events: none;
+		opacity: 0.5;
+		transform: r;
+	}
+
+	&.btn--outlined {
+		background-color: transparent;
+		color: $text-color;
+		border-color: $border-color;
+		@include btn-active-states { 
+			background-color: transparent;
+			border-color: $border-hover-color;
+			color: $text-color-dark;
+		}
+	}
+
+
+	/**
+	 *  -------------------------------------------------------------------
+	 *                       MODIFIKATORI VELICINA
+	 *  -------------------------------------------------------------------
+	 *
+	 *  logika modifikatora sledi logiku heading elemenata jer
+	 *  su modifikatori zasnovani na velicini fonta heading elemenata
+	 *  
+	 */
+
+	@for $level from 1 through 6 {
+		&.btn--h#{$level} {
+			@include object-init($level);
+		}
+	} 
+
+	&.btn--100-1 {
+		width: 100%;
+	}
+
+
+	/**
+	 *  ------------------------------------------------------------------------
+	 *                              EXTRA MODIFIKATORI
+	 *  ------------------------------------------------------------------------
+	 */
+	&.btn--outlined {
+		@each $dir in $btn-hovered-dir {
+			&.btn--outlined-hovered-#{$dir} {
+				@include btn-hovered($text-color-contrast, $background-color-contrast-dark, $dir);
+			}
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

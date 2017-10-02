@@ -1,0 +1,55 @@
+.btn-group {
+	display: inline-flex;
+	.btn {
+		flex: 0 1 auto;
+		&:not(:last-child):not(:first-child), &:nth-last-child(1) {
+			border-left-style: none;
+		}
+		@if $is-rounded {
+			&:not(:last-child):not(:first-child) {
+				border-radius: 0px;
+			}
+			&:last-child {
+				border-top-left-radius: 0px;
+				border-bottom-left-radius: 0px;
+			}	
+			&:first-child {
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}		
+		}
+	}
+
+	&.btn-group--100-1 {
+		display: flex;
+		.btn {
+			flex-grow: 1;
+		}
+	}
+
+	&.btn-group--v {
+		flex-direction: column;
+			.btn {
+				&:not(:last-child):not(:first-child), &:nth-last-child(1) {
+					border-top-style: none;
+					border-left-style: solid;
+				}
+				&:last-child {
+					border-top-left-radius: 0px;
+					border-top-right-radius: 0px;
+					@if $is-rounded {
+						border-bottom-left-radius: $component-border-radius;
+						border-bottom-right-radius: $component-border-radius;
+					}
+				}	
+				&:first-child {
+					border-bottom-right-radius: 0px;
+					border-bottom-left-radius: 0px;
+					@if $is-rounded {
+						border-top-right-radius: $component-border-radius;
+						border-top-left-radius: $component-border-radius;
+					}
+				}
+		}		
+	}
+}

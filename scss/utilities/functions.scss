@@ -1,0 +1,72 @@
+@function pow($number, $exponent, $factor: 1) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }@else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value * $factor;
+}
+
+/**
+ * @param { s|h|d  } $type - d(manje vrednosti od heading vrednosti), u(vece vrednosti od heading vrednosti) 
+ * @param { number } $num - od 1-6,analogno HTML heading nivoima h1 do h6
+ */
+@function get-font-size($type, $num, $device:mobile) {
+  $result: 1;
+  /* stepenovi za skaliranje */
+  $level-list: 4, 3, 2, 1, 0, -1;
+  $target-level: nth($level-list, $num);
+
+  @if $type == h {
+    $result: pow(map-get(map-get($responsive, $device), font-size-ratio), $target-level, $font-size-primary);
+  } @else if $type == u {
+    $result: pow(map-get(map-get($responsive, $device), font-size-ratio), $target-level, $font-size-primary * $font-size-up-ratio);  
+  } @else if $type == d {
+    $result: pow(map-get(map-get($responsive, $device), font-size-ratio), $target-level, $font-size-primary * $font-size-down-ratio); 
+  }
+
+  @return $result;
+}
+
+@function get-theme-color($theme, $color) {
+  @return map-get(map-get($themes, $theme), $color);
+}
+
+@function remove-unit-val($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function unit-coverter($num, $to:em) {
+  $result: remove-unit-val($num);
+  $unit: 1;
+
+  @if $to == em {
+    $unit: 1em;
+  } @else if $to == rem {
+    $unit: 1rem;
+  }
+
+  @return $result * $unit;
+}
+
+@function px-converter($num, $type:rem) {
+  $result: remove-unit-val($num) / 16;
+  $unit: 1;
+
+  @if $type == rem {
+    $unit: 1rem;
+  } @else if $type == em {
+    $unit: 1em;
+  }
+
+  @return $result * $unit;
+
+}
+

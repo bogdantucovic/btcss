@@ -1,0 +1,50 @@
+@mixin mobile-only {
+  @media (max-width: map-get(map-get($responsive, mobile), breakpoint)) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: map-get(map-get($responsive, mobile), breakpoint)) and 
+         (max-width: map-get(map-get($responsive, tablet), breakpoint) - 0.1em ) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: map-get(map-get($responsive, mobile), breakpoint)) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: map-get(map-get($responsive, tablet), breakpoint))  and 
+         (max-width: map-get(map-get($responsive, desktop), breakpoint) - 0.1em ) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map-get(map-get($responsive, tablet), breakpoint)) {
+    @content;
+  }
+}
+
+@mixin widescreen-only {
+  @media (min-width: map-get(map-get($responsive, desktop), breakpoint))  and 
+         (max-width: map-get(map-get($responsive, widescreen), breakpoint) - 0.1em ) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media (min-width: map-get(map-get($responsive, desktop), breakpoint)) {
+    @content;
+  }
+}
+
+@mixin fullhd {
+  @media (min-width: map-get(map-get($responsive, fullhd), breakpoint)) {
+    @content;
+  }
+}

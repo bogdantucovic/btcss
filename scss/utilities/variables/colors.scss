@@ -1,0 +1,91 @@
+$white: #fff !default;
+$black: lighten(#000, 20) !default;
+
+$background-color: $white;
+$text-color: $black;
+
+$background-color-contrast: $text-color;
+$background-color-contrast-dark: darken($background-color-contrast,10);
+$background-color-contrast-darker: darken($background-color-contrast-dark,10);
+$background-color-dark: darken($background-color, 10);
+$background-color-darker: darken($background-color-dark, 20);
+
+$text-color-contrast: $background-color;
+$text-color-dark: darken($text-color,10);
+$text-color-darker: darken($text-color-dark,10);
+$text-color-light: lighten($text-color,10);
+
+$disabled-color: $text-color-light;
+$placeholder-color: $text-color-light;
+
+$hover-background-color: $background-color-dark;
+$hover-background-color-contrast: $background-color-contrast-dark;
+$hover-color: $text-color-dark;
+
+$border-color: $background-color-darker;
+$border-focus-color: darken($border-color,20);
+$border-hover-color: darken($border-color,10);
+
+$themes: (
+	fresh : (
+		primary: #57bc90,
+		primary-contrast: #fff,
+		primary-dark: darken(#57bc90,10),
+
+		info: #77c9d4,
+		info-contrast: #fff,
+		info-dark: darken(#77c9d4,10), 
+
+		positive: #015249,
+		positive-contrast: #fff,
+		positive-dark: darken(#015249,10),
+
+		negative: #ff5992,
+		negative-contrast: #fff,
+		negative-dark: darken(#ff5992,10)
+	),
+
+	stormy : (
+		primary: #192231,
+		primary-contrast: #fff,
+		primary-dark: darken(#192231,10),
+
+		info: #98878f, 
+		info-contrast: #fff,
+		info-dark: darken(#98878f,10),
+
+		positive : #1fb58f,
+		positive-contrast: #fff,
+		positive-dark: darken(#1fb58f,10),
+
+		negative : #e14658,
+		negative-contrast: #fff,
+		negative-dark: darken(#e14658,10),
+	),
+
+	modern : (
+		primary: #4c68d7,
+		primary-dark: darken(#4c68d7,10),
+		primary-contrast: #fff,
+
+		info: #8a3ab9, 
+		info-dark: darken(#8a3ab9,10), 
+		info-contrast: #fff,
+
+		positive: #23d160,
+		positive-dark: darken(#23d160,10),
+		positive-contrast: #fff,
+
+		negative: #cd486b,
+		negative-dark: darken(#cd486b,10),
+		negative-contrast: #fff
+	)
+)!default;
+
+/* jedna tema uvecava kod za oko 6% */
+$theme-list: stormy, fresh, modern !default;
+
+/* nazivi konstanti su napisani velikim slovima */
+$THEME_COLORS_BASE: primary, info, positive, negative;
+$THEME_COLORS_VALIDITY: positive, negative;
+

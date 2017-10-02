@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title> btcss </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Form">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+		</script>
+	<link href="dist/css/formPage.css" rel="stylesheet"></head>
+	<body class="theme-modern">
+
+		<nav class="nav nav--primary nav--h-v" id="nav-main">
+			<div class="nav__header">
+				<button type="button" class="btn btn--primary" 
+					data-target-toggle = '{"target":"#nav-main > ul", "className": "slide-toggle"}'>
+					<i class="material-icons">menu</i>
+				</button>
+			</div>
+			<ul>
+				<li> <a href="index.html" >btcss</a> </li>
+				<li> <a href="button.html" > .btn </a> </li>
+				<li> <a href="columns.html" > .columns </a> </li>
+				<li> <a href="nav.html" > .nav </a> </li>
+				<li> <a href="table.html" > .table </a> </li>
+				<li> <a href="form.html" > .form </a> </li>
+				<li id="theme-change"> <a href="#"> teme </a>
+					<ul class="nav__sub-list">
+						<li><a href="#" data-theme = "theme-fresh"> theme-fresh </a></li>
+						<li><a href="#" data-theme = "theme-modern"> theme-modern </a></li>
+						<li><a href="#" data-theme = "theme-stormy"> theme-stormy </a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="section">
+			<div class="text-align-center">
+				<h2 class="h3">Vertikalna forma</h2>
+				<h5>
+					<span class="tag tag--info color--info"> .form__field </span> wraper element uspostavlja konzistentan
+					vertikalan razmak izmedju polja forme i izmedju elemenata polja forme. 
+					Predviđeni elementi jednog polja forme su .label, .input, .textarea i .form-info.
+				</h5>
+
+				<h6 class="u6 color--info">	
+					<span class="tag tag--info ">.form-info </span> element 
+					može se koristiti za help i validacione pooruke. 
+					Preporučuje se njegovo korišćenje sa helper klasama za boje i pozicioniranje
+				</h6>
+			</div>
+
+			<form class="form">
+				<div class="form__field"> 
+					<label class="label" > Normal input
+						<input type="text" class="input width-100-1" placeholder="Normal input" >
+						<div class="form-info form-info--is-hidden">  </div> 
+					</label>
+				</div>
+
+				<div class="form__field"> 
+					<label class="label" for="normal-input"> Normal input 2 </label>
+					<input type="text" class="input width-100-1" placeholder="Normal input 2" id="normal-input-2" >
+					<div class="form-info color--info text-align-right"> Help message </div>
+				</div>
+
+				<div class="form__field"> 
+					<label class="label" for="textarea"> Textarea </label>
+					<textarea class="textarea width-100-1" id="textarea" placeholder="Textarea"></textarea>
+				</div>
+
+				<div class="form__field"> 
+					<label class="label label--checked"> 
+						<input type="radio" class="radio" name="radio-example1">
+						<span>Radio btn 1</span>
+					</label>
+
+					<label class="label label--checked" > 
+						<input type="radio" class="radio" name="radio-example1" >
+						<span>Radio btn 2</span>
+					</label>
+				</div>
+
+				<div class="form__field">
+					<label class="label label--checked" > 
+						<input type="checkbox" class="checkbox">
+						<span>Checkbox</span>
+					</label>
+
+					<label class="label label--checked" > 
+						<input type="checkbox" class="checkbox" >
+						<span>Checkbox 2</span>
+					</label>
+				</div>
+
+				<div class="btn-group">
+					<input type="submit" class="btn btn--positive">
+					<input type="reset" class="btn btn--negative">
+				</div>
+			</form>
+		</div>
+
+		<div class="section">
+			<div class="text-align-center">
+				<h2 class="h3"> Horizontalna forma </h2>
+				<h5>	<span class="tag tag--info color--info"> .form__field-h </span> je wrapper za horizontalno pozicioniranje 
+					elemenata forme. Koristan je za horizontalno, inline, pozicioniranje višestrukih .checkbox, .radio elemenata 
+					kao .label elemenata u kombinaciji sa .form__field elementima 
+				</h5>
+				<h6 class="color--negative"> .form__field-h element koji sadrži .label--checked elemente treba da sadrži i 
+					klasu <span class="tag tag--info "> .form__field-h--checked </span> u cilju očuvanja konzistentnog razmaka  
+				</h6>
+			</div>
+			<form class="form">
+				
+				<div class="form__field-h"> 
+					<label class="label" for="h-normal-input" > Normal input </label>
+					<div class="form__field">
+						<input type="text" class="input width-100-1" placeholder="Normal input" id="h-normal-input" >
+						<div class="form-info text-align-right color--info"> Validation message </div>
+					</div>
+				</div>
+				
+				<div class="form__field-h"> 
+					<label class="label" for="h-textarea" > Textarea </label>
+					<div class="form__field" >
+						<textarea class="textarea width-100-1" id="h-textarea" placeholder="Textarea"></textarea>
+					</div>
+				</div>
+
+				
+				<div class="form__field-h form__field-h--checked"> 
+					<label class="label label--checked"> 
+						<input type="radio" class="radio" name="radio-example" >
+						<span>Radio</span>
+					</label>
+
+					<label class="label label--checked" > 
+						<input type="radio" class="radio" name="radio-example" checked>
+						<span>Radio init checked</span>
+					</label>
+
+					<label class="label label--checked" > 
+						<input type="radio" class="radio" name="radio-example" >
+						<span>Radio</span>
+					</label>
+				</div>
+
+				<div class="form__field-h form__field-h--checked">
+					<label class="label label--checked" > 
+						<input type="checkbox" class="checkbox" checked>
+						<span>Checkbox init checked</span>
+					</label>
+
+					<label class="label label--checked" > 
+						<input type="checkbox" class="checkbox" >
+						<span>Checkbox</span>
+					</label>
+				</div>
+
+				<div class="form__field-h">
+					<input type="submit" class="btn btn--positive">
+				</div>
+
+			</form>
+		</div>
+
+		<div class="section">
+
+			<form class="form">
+
+				<div class="form__field">
+					<input type="text" class="input input--h3 input--positive width-100-1" 
+						placeholder="input--h3 input--positive" >
+				</div>
+
+				<div class="form__field">
+					<input type="text" class="input input--h4 input--negative width-100-1" 
+						placeholder="input--h4 input--negative" >
+				</div>
+
+				<div class="form__field">
+					<input type="text" class="input  width-100-1" placeholder="input(normal)" >
+				</div>
+
+				<div class="form__field">
+					<input type="text" class="input  input--underline width-100-1" 
+					placeholder="input(normal) input--underline" >
+				</div>
+
+				<div class="form__field">
+					<input type="text" class="input input--h6 width-100-1" placeholder="input--h6" >
+				</div>
+
+				<div class="form__field">
+					<textarea class=" textarea width-100-1" id="textarea" placeholder="Textarea"></textarea>
+				</div>
+
+				<div class="rounded-merge columns columns--mobile margin-v">
+					<input type="text" class="column input" placeholder="input(normal)" >
+					<input type="submit" class="column btn btn--positive">
+				</div>
+				
+				<div class="btn-group">
+					<input type="submit" class="btn btn--positive">
+					<input type="reset" class="btn btn--negative">
+				</div>
+			</form>
+		</div>
+
+		<footer class="section">
+			<div class="u6 text-align-center">
+				Developed by 
+				<a href="https://www.linkedin.com/in/btucovic/" 
+					class="color--positive" target="__blank"> 
+					Bogdan Tucović
+				</a>
+			</div>
+		</footer>
+
+	<script type="text/javascript" src="dist/js/formPage.js"></script></body>
+</html>

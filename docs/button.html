@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>btcss</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="author" content="Bogdan Tucović">
+		<meta name="description" content="CSS framework">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+		</script>
+	<link href="dist/css/buttonPage.css" rel="stylesheet"></head>
+	<body class="theme-modern">
+		
+		<nav class="nav nav--primary nav--h-v" id="nav-main">
+			<div class="nav__header">
+				<button type="button" class="btn btn--primary" 
+					data-target-toggle = '{"target":"#nav-main > ul", "className": "slide-toggle"}'>
+					<i class="material-icons">menu</i>
+				</button>
+			</div>
+			<ul>
+				<li> <a href="index.html" >btcss</a> </li>
+				<li> <a href="button.html" > .btn </a> </li>
+				<li> <a href="columns.html" > .columns </a> </li>
+				<li> <a href="nav.html" > .nav </a> </li>
+				<li> <a href="table.html" > .table </a> </li>
+				<li> <a href="form.html" > .form </a> </li>
+				<li id="theme-change"> <a href="#"> theme </a>
+					<ul class="nav__sub-list">
+						<li><a href="#" data-theme = "theme-fresh"> theme-fresh </a></li>
+						<li><a href="#" data-theme = "theme-modern"> theme-modern </a></li>
+						<li><a href="#" data-theme = "theme-stormy"> theme-stormy </a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn--h 
+				<span class="tag tag--primary"> 1 </span> |
+				<span class="tag tag--primary"> 2 </span> |
+				<span class="tag tag--primary"> 3 </span> |
+				<span class="tag tag--primary"> 4 </span> |
+				<span class="tag tag--primary"> 6 </span> 
+			</h2>
+			<h5>h5 font-size sdrži osnovna button klasa .btn</h5>
+			<h5>
+				Default - veličine dugmadi se menjaju u skladu sa medija upitima 
+				zbog promene odnosa font-size vrednosti tipografskih klasa
+			</h5>
+			<button class="btn btn--h6 ">.btn--h6 </button>
+			<button class="btn ">btn (normal) </button>
+			<button class="btn btn--h4 ">.btn--h4 </button>
+			<button class="btn btn--h3 ">.btn--h3 </button>
+			<button class="btn btn--h2 ">.btn--h2 </button>
+			<button class="btn btn--h1 ">.btn--h1 </button>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn-- 
+				<span class="tag tag--primary"> primary </span> |
+				<span class="tag tag--primary">info </span> |
+				<span class="tag tag--primary"> positive </span> |
+				<span class="tag tag--primary"> negative </span>
+			</h2>
+			<h5>Sufix čine nazivi osnovnih boja</h5>
+			<button class="btn btn--primary"> btn--primary </button>
+			<button class="btn btn--info"> btn--info </button>
+			<button class="btn btn--positive"> btn--positive </button>
+			<button class="btn btn--negative"> btn--negative </button>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn-- 
+				<span class="tag tag--primary"> primary </span> |
+				<span class="tag tag--primary">info </span> |
+				<span class="tag tag--primary"> positive </span> |
+				<span class="tag tag--primary"> negative </span>
+				-outlined 
+			</h2>
+			<h5>Infix čine nazivi osnovnih boja</h5>
+
+			<button class="btn btn--outlined"> btn--outlined </button>
+			<button class="btn btn--primary-outlined"> btn--primary-outlined </button>
+			<button class="btn btn--info-outlined"> btn--info-outlined </button>
+			<button class="btn btn--positive-outlined"> btn--positive-outlined </button>
+			<button class="btn btn--negative-outlined"> btn--negative-outlined </button>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn--outlined-hovered- 
+				<span class="tag tag--primary"> ltr </span> |
+				<span class="tag tag--primary">rtl </span> |
+				<span class="tag tag--primary"> ttb </span> |
+				<span class="tag tag--primary"> btt </span> 
+			</h2>
+			<!-- h3 - helper klasa za tipografiju, mozemo npr. semanticki h2 stilizovati kao h3 --> 
+			<h5>Klasa menja hover efekat outlined dugmadi</h5>
+
+			<button class="btn btn--primary-outlined btn--outlined-hovered-ltr"> 
+				btn--primary-outlined btn--outlined-hovered-ltr
+			</button>
+			<button class="btn btn--info-outlined btn--outlined-hovered-rtl"> 
+				btn--info-outlined btn--outlined-hovered-rtl
+			</button>
+			<button class="btn btn--primary-outlined btn--outlined-hovered-ttb"> 
+				btn--primary-outlined btn--outlined-hovered-ttb
+			</button>
+			<button class="btn btn--info-outlined btn--outlined-hovered-btt"> 
+				btn--info-outlined btn--outlined-hovered-btt
+			</button>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> Primer sa Google ikonicama </h2>
+			<button class="btn btn--primary"><i class="material-icons">important_devices</i></button>
+			<button class="btn btn--primary-outlined"><i class="material-icons">important_devices</i></button>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn--is-disabled </h2>
+			<button class="btn btn--primary-outlined btn--is-disabled"> btn--primary-outlined btn--is-disabled </button>
+			<button class="btn btn--primary btn--is-disabled"> btn--primary btn--is-disabled </button>
+			<h2 class="h3">.btn--is-active</h2>
+			<button type="button" class="btn btn--primary" id="btn-toggle"> btn btn--primary </button>
+		</div>
+
+		<div class="section">
+			<button class="btn btn--positive btn--100-1"> btn--100-1 </button>
+		</div>
+
+		<h1 class="text-align-center u1"> .btn-group </h1>
+		<!-- helper klase od u1 do u6  omogucavaju nesto veci font-size od komplementarnog heading fonta -->
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn--group </h2>
+			<div class="btn-group">
+				<button class="btn btn--primary-outlined"> btn--primary-outlined </button>
+				<button class="btn btn--info-outlined"> btn--info-outlined </button>
+				<button class="btn btn--positive-outlined"> btn--positive-outlined </button>
+				<button class="btn btn--negative-outlined"> btn--negative-outlined </button>
+			</div>
+			<div class="btn-group margin">
+				<button class="btn btn--primary"> btn--primary </button>
+				<button class="btn btn--info"> btn--info</button>
+				<button class="btn btn--positive"> btn--positive </button>
+				<button class="btn btn--negative"> btn--negative </button>
+			</div>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn-group.btn-group-v </h2>
+			<h5> v karakter je globalni karakter koji u nazivima klasa ukazuje na vertikalnu poziciju </h5>
+			</h5>
+			<div class="btn-group btn-group--v">
+				<button class="btn btn--primary"> btn--primary </button>
+				<button class="btn btn--info"> btn--info</button>
+				<button class="btn btn--positive"> btn--positive </button>
+				<button class="btn btn--negative"> btn--negative </button>
+			</div>
+			<div class="btn-group btn-group--v margin">
+				<button class="btn btn--primary-outlined"> btn--primary-outlined </button>
+				<button class="btn btn--info-outlined"> btn--info-outlined</button>
+				<button class="btn btn--positive-outlined"> btn--positive-outlined </button>
+				<button class="btn btn--negative-outlined"> btn--negative-outlined </button>
+			</div>
+		</div>
+
+		<div class="section text-align-center">
+			<h2 class="h3"> .btn-group.btn-group--100-1</h2>
+			<h5>
+				100-1 &nbsp; cifra crtica cifra &nbsp; u nazivima 
+				klasa predstavlja razlomak koji treba da ukazuje na dimenzije
+			</h5>
+			</h5>
+			<div class="btn-group btn-group--v btn-group--100-1">
+				<button class="btn btn--primary"> btn--primary </button>
+				<button class="btn btn--info"> btn--info</button>
+				<button class="btn btn--positive"> btn--positive </button>
+				<button class="btn btn--negative"> btn--negative </button>
+			</div>
+			<div class="btn-group btn-group--100-1 margin-top">
+				<button class="btn btn--primary"> btn--primary </button>
+				<button class="btn btn--info"> btn--info</button>
+				<button class="btn btn--positive"> btn--positive </button>
+				<button class="btn btn--negative"> btn--negative </button>
+			</div>
+		</div>
+
+		<footer class="section">
+			<div class="u6 text-align-center">
+				Developed by 
+				<a href="https://www.linkedin.com/in/btucovic/" class="color--positive" target="__blank"> Bogdan Tucović</a>
+			</div>
+		</footer>
+
+	<script type="text/javascript" src="dist/js/buttonPage.js"></script></body>
+</html>

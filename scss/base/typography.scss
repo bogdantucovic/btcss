@@ -1,0 +1,65 @@
+.code {
+	font: {
+		family: $font-family-mono;
+		size: $font-size-primary;
+		weight: $weight-lighter;
+	}
+}
+
+.p {
+	line-height: $line-height-primary; 
+	margin:{
+		top: $space-primary;
+		bottom: $space-primary;
+	}
+}
+
+.small {
+	@extend %h6;
+}
+
+/**
+ * .h* - klase sa istom vrednoscu font-size kao heading elementi
+ * .d* - klase sa manjim vrednostima font-size od heading elemenata
+ * .u* - klase sa vecim vrednostima font-size od heading elemenata
+ */
+@each $type in h, u, d {
+
+	/**
+		* 1. marina je jednaka osnovnom razmaku, visini linije,
+		*    u cilju ocuvanja vertikalnog ritma
+		*/
+	@for $i from 1 through 6 {
+		.#{$type}#{$i} {
+			@include set-font-size($type, $i);
+			margin:{ /* 1 */
+				top: $space-primary;
+				bottom: $space-primary;
+			}
+			line-height: $line-height-primary; 
+			font-weight: $weight-normal;
+		}
+	}
+}
+
+@if $is-typography {
+
+  @each $heading in h1, h2, h3, h4, h5, h6 {
+	 	#{$heading} {
+			@extend .#{$heading};
+		} 	
+  }
+
+	p {
+		@extend .p;
+	}
+
+	code {
+		@extend .code;
+	}
+
+	small {
+		@extend .small;
+	}
+
+}

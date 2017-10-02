@@ -1,0 +1,4 @@
+@each $color in $THEME_COLORS_BASE { 
+	@include themify('.bg--#{$color}', ( background-color: #{$color}, color: #{$color}-contrast ));
+	@include themify('.color--#{$color}', ( background-color: #{$color}-contrast, color: #{$color} ));
+}

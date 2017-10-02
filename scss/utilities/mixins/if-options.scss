@@ -1,0 +1,12 @@
+@mixin border-radius($size : $object-border-radius) {
+  @if $is-rounded {
+    border-radius: $size;
+  }
+}
+
+@mixin box-shadow($val) {
+  @if $is-box-shadow {
+    box-shadow: $val;
+  }
+}
+

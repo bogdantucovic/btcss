@@ -1,0 +1,7 @@
+#colors div + div {
+	margin-top: 0.3em;
+}
+
+#colors div {
+	padding: 0.5rem;
+}

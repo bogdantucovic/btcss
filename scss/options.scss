@@ -1,0 +1,21 @@
+$is-typography: true;
+
+$is-rounded: true;
+
+$is-box-shadow: true;
+
+/**
+ *  false - zbog lose podrske za pretrazivace 
+ *  https://caniuse.com/#search=scrollbar
+ */
+$is-scrollbar: false;
+
+/**
+ *  da li treba menjati odnos izmedju velicina fonta na 
+ *  na razlicitim uredjajima
+ */
+$is-responsive-font-ratio: true;
+
+
+
+

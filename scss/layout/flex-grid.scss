@@ -1,0 +1,211 @@
+$columns: 12 !default;
+$gutter-desktop: map-get(map-get($responsive,desktop), gutter)!default;
+$gutter-tablet: map-get(map-get($responsive,tablet), gutter)!default;
+$gutter-mobile: map-get(map-get($responsive,mobile), gutter)!default;
+$gutter-widescreen: map-get(map-get($responsive,widescreen), gutter)!default;
+$gutter-fullhd: map-get(map-get($responsive,fullhd), gutter)!default;
+
+@mixin set-column($device, $i, $gutter-val) {
+	$column-width: 100% * $i / $columns;
+	
+	flex: 0 0 auto;
+	
+	width: calc(#{$column-width} - #{$gutter-val});
+	
+	@if $gutter-val != 0% {
+		margin-left: $gutter-val / 2;
+		margin-right: $gutter-val / 2;
+	}
+}
+
+@mixin tablet-offset {
+	@include tablet {
+		@for $i from 1 through $columns {
+			&.tablet-offset-#{$i} {
+				margin-left: 100% * $i / $columns; 
+			}
+		}
+	}
+}
+
+@mixin tablet-columns($gutter-val:0%) {
+	@include tablet {
+		@for $i from 1 through $columns {
+			&.tablet-#{$i} {
+				@include set-column(tablet, $i, $gutter-val);
+			}
+		}
+	}
+}
+
+@mixin desktop-offset {
+	@include desktop {
+		@for $i from 1 through $columns {
+			&.desktop-offset-#{$i} {
+				margin-left: 100% * $i / $columns; 
+			}
+		}
+	}
+}
+
+@mixin desktop-columns($gutter-val:0%) {
+	@include desktop {
+		@for $i from 1 through $columns {
+			&.desktop-#{$i} {
+				@include set-column(desktop, $i, $gutter-val);
+			}
+		}
+	}
+}
+
+@mixin widescreen-offset {
+	@include widescreen {
+		@for $i from 1 through $columns {
+			&.widescreen-offset-#{$i} {
+				margin-left: 100% * $i / $columns; 
+			}
+		}
+	}
+}
+
+@mixin widescreen-columns($gutter-val:0%) {
+	@include widescreen {
+		@for $i from 1 through $columns {
+			&.widescreen-#{$i} {
+				@include set-column(widescreen, $i, $gutter-val);
+			}
+		}
+	}
+}
+
+@mixin fullhd-offset {
+	@include fullhd {
+		@for $i from 1 through $columns {
+			&.fullhd-offset-#{$i} {
+				margin-left: 100% * $i / $columns; 
+			}
+		}
+	}
+}
+
+@mixin fullhd-columns($gutter-val:0%) {
+	@include fullhd {
+		@for $i from 1 through $columns {
+			&.fullhd-#{$i} {
+				@include set-column(fullhd, $i, $gutter-val);
+			}
+		}
+	}
+}
+
+@mixin mobile-offset {
+	@include mobile-only {
+		@for $i from 1 through $columns {
+			&.mobile-offset-#{$i} {
+				margin-left: 100% * $i / $columns; 
+			}
+		}
+	}
+}
+
+@mixin mobile-columns($gutter-val:0%) {
+	@include mobile-only { 
+		@for $i from 1 through $columns {
+			&.mobile-#{$i} {
+				@include set-column(mobile, $i, $gutter-val);
+			}
+		}
+	}
+}
+
+@mixin mobile-flex-direction($direction : column) {
+	@include mobile-only {
+		flex-direction: $direction;
+	}
+}
+
+.columns {
+	display: flex;
+	text-align: center;
+	@include mobile-flex-direction;
+
+	&.columns--reverse {
+		flex-direction: row-reverse;
+		@include mobile-flex-direction(column-reverse);
+		&.columns--mobile {
+			@include mobile-flex-direction(row-reverse);
+		}
+	}
+
+	&.columns--wrap {
+		flex-wrap: wrap;
+	}
+	
+	/**
+	 *  mobile modifikator omogucava deljenje 
+	 * k olona na mobilnim uredjajima
+	 */
+	&.columns--mobile {
+		@include mobile-flex-direction(row);
+
+		& > .column {
+			@include mobile-columns;
+		}
+
+		&.columns--gutter > .column {
+			@include mobile-columns($gutter-mobile);
+		}
+	}
+
+	&:not(.columns--mobile).columns--gutter {
+		@include mobile-only {
+			& > .column:not(:last-child) {
+				margin-bottom: $gutter-mobile;
+			}
+			&.columns--reverse > .column:not(:first-child) {
+				margin-bottom: $gutter-mobile;
+			}
+		}
+	}
+	
+	/**
+	 * ako se koriste kolone bez razmaka onda se mora definisati klasa za broj kolona
+	 * za svaku kolonu zbog odrzanja preciznosti
+	 */
+	&.columns--gutter  {
+		margin: 0 -1 * $gutter-mobile / 2; 
+		@include tablet { margin: 0 1 * $gutter-tablet / 2; }
+		@include desktop { 	margin: 0 -1 * $gutter-desktop / 2; }
+		@include widescreen { margin: 0 -1 * $gutter-widescreen / 2; }
+		@include fullhd { margin: 0 1 * $gutter-fullhd / 2; }
+
+		& > .column {
+			@include tablet-columns($gutter-tablet);
+			@include desktop-columns($gutter-desktop);
+			@include widescreen-columns($gutter-widescreen);
+			@include fullhd-columns($gutter-fullhd);		
+		}
+	}
+
+	& > .column {
+		display: block;
+		flex: 1 1 0;
+		@include mobile-offset;
+		@include tablet-offset;
+		@include tablet-columns;
+		@include desktop-offset;
+		@include desktop-columns;
+		@include widescreen-offset;
+		@include widescreen-columns;
+		@include fullhd-offset;
+		@include fullhd-columns;
+	}
+
+}
+
+
+
+
+
+
+

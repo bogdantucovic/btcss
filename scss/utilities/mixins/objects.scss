@@ -1,0 +1,21 @@
+@mixin scrollbar($scrollbar-track-background : $text-color) {
+	&::-webkit-scrollbar {
+		width: 0.8em;
+	}
+	&::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-background;
+	}
+	&::-webkit-scrollbar-button {
+		background-color: darken($scrollbar-track-background, 10);
+	}
+}
+
+@mixin object-init($num, $type: h) {
+
+	@include set-font-size($type, $num);
+
+	padding: $object-padding $object-padding * 2;
+}
+
+
+

@@ -1,0 +1,302 @@
+$nav-padding: $space-1-2 !default;
+$nav-animations: 'slide-left', 'slide-top' !default;
+
+@keyframes slide-top-enter {
+	0% { 
+		transform: translate3d(0, 100%, 0);
+		
+	} 
+	100% {  
+		transform: translate3d(0, 0, 0); 
+		visibility: visible; 
+	} 
+}
+
+@keyframes slide-top-leave {
+	0% { 
+		transform: translate3d(0, 0, 0); 
+		visibility: visible; 
+	} 
+	100% { 
+		transform: translate3d(0, -50%, 0); 
+		
+	} 
+}
+
+@keyframes slide-left-enter {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+}
+
+@keyframes slide-left-leave {
+  0% {
+    transform: translate3d(0, 0, 0);
+    visibility: hidden;
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+
+@mixin sub-list-animation($animation-name, $type: enter) {
+	@if $type == enter {
+		animation: #{$animation-name}-enter 250ms ease-in-out forwards;
+	} @else if $type == leave {
+		animation: #{$animation-name}-leave 250ms ease-out forwards;
+	}
+}
+
+@mixin nav-sub-list($left: 0) {
+	position: relative;
+	left: $left;
+	width: 100%;
+	@include tablet {
+		position: absolute;
+		visibility: hidden;
+	}
+}
+
+@mixin nav-h {
+	
+	ul {
+		display: flex;
+		flex-direction: column;
+		@include tablet {
+			flex-direction: row;
+			&.nav__sub-list {
+				@each $animation in $nav-animations {
+					&.#{$animation}-leave {
+						@include sub-list-animation($animation, 'leave');
+					}	
+					&.#{$animation} {
+						@include sub-list-animation($animation);
+					}
+				}	
+			}
+		}
+	}
+
+	li {
+		display: block;
+		width: 100%;
+		@include tablet {
+			a > span {
+				@include v-center-unknow-height;
+				display: block;
+			}
+		}
+	}
+
+	.nav__sub-list {
+		@include nav-sub-list;
+	}
+
+}
+
+@mixin nav-size-variant($nav-num, $nav-padding-factor) {
+	&.nav--h#{$nav-num} {
+		@include set-font-size(u,$nav-num);
+		a:not(.btn) {
+			padding: $nav-padding * $nav-padding-factor $nav-padding;
+		}
+		.nav__sub-list {
+			@include set-font-size(h,$nav-num);
+		}
+	}	
+}
+
+
+.nav {
+	@extend %h5;
+	text-align: center;
+
+	a:not(.btn) {
+		display: block;
+		@include tablet {
+			height: 100%;
+		}
+		font-size: inherit;
+		padding: $nav-padding;
+		transition: 0.25s ease-in-out;
+		&:hover,
+		&.is--active {
+			background-color: $hover-background-color;
+		}
+	}
+
+	li {
+		.input {
+			background-color: inherit;
+			color: inherit;
+			box-shadow: none;
+		}
+
+		&.form-field-h {
+			display: flex !important;
+			align-items: center;
+			margin: $space-1-2-em;
+			@include mobile-only {
+				justify-content: center;
+			}
+		}
+
+		&:not(.form-field-h) .btn {
+			margin: $space-1-2-em;
+		}
+	}
+
+	& > ul {
+		transition: max-height 0.35s ease-in-out;
+		@include mobile-only {
+			max-height: 0;
+			overflow-y: hidden;
+			&.slide-toggle {
+				max-height: 3000px;
+			}
+		}
+	}
+
+	/** 
+	 *  1. na mobilnim font-size vrednost jednaka font-size vrednosti linkova
+	 *     jer figcaption ima ulogu text linkova
+	 */
+	.nav__sub-list {
+		border-top: 1px solid $border-color;
+		@extend %d5;
+		figure {
+			@include mobile-only {
+				img { display: none; }
+			}
+			figcaption { /* 1 */
+				font-size: inherit;
+				@include tablet {
+					@include set-font-size(h,6);
+				}
+			}
+		}
+	}
+
+	.nav__header {
+		text-align: left;
+		@include tablet {
+			display: none;
+		}
+		.btn {
+			border-radius: 0;
+		}
+	}
+
+	/**
+	*
+	*  ------------------------------------------------------------------------------------------------------
+	*                														 MODIFIKATORI
+	*  ------------------------------------------------------------------------------------------------------
+	*
+	*/
+
+
+	/**
+	*  -----------------------------------------
+	*                 VELICINE
+	*  -----------------------------------------
+	*/
+	@each $nav-size, $nav-padding-ratio in (6, 0.5), (4, 2) {
+		@include nav-size-variant($nav-size, $nav-padding-ratio);
+	}
+
+
+	/**
+	*  -----------------------------------------
+	*                 FIXED
+	*  -----------------------------------------
+	*  1. vertikalni meni maksimalne visine
+	*/
+
+	&.nav--fixed-top-100-1-v { /* 1 */
+		position: fixed;
+		width: 100%;
+		min-height: auto;
+		@include tablet {
+			height: 100vh;
+			overflow-y: auto;
+			min-height: 100%;
+			min-width: 200px;
+			width: auto;
+		}
+	}
+
+
+	/**
+	*  -----------------------------------------
+	*                 HORIZONTAL
+	*  -----------------------------------------
+	*/
+
+	&.nav--h-h {
+		@include nav-h;
+		position: relative;
+	}
+
+	&.nav--h-v {
+		@include nav-h;
+
+		li {
+			position: relative;
+		}
+
+		.nav__sub-list, .nav__sub-list-left {
+			flex-direction: column;
+			@include tablet {
+				border-top-style: none;
+			}
+		}
+
+		.nav__sub-list {
+			@include tablet {
+				&.nav__sub-list-left {
+					top: 0;
+					left: 100%;
+				}
+			
+				&.nav__sub-list-right {
+					top: 0;
+					left: -100%;
+				}
+			}
+		}
+	}
+
+}
+
+	/**
+	*  -----------------------------------------
+	*                 BOJE
+	*  -----------------------------------------
+	*/
+	@include themify('.nav a:not(.btn)' , ( color: primary ));
+
+	@each $color in $THEME_COLORS_BASE {
+
+		@include themify(('.nav.nav--#{$color}' , '.nav.nav--#{$color} a:not(.btn)'), (
+			background-color: #{$color},
+			color: #{$color}-contrast
+		));
+
+		@include themify(('.nav.nav--#{$color} a:not(.btn):hover', '.nav.nav--#{$color} a:not(.btn).is--active'), ( 
+			background-color: #{$color}-dark, 
+			color: #{$color}-contrast )
+		);
+
+		@include themify('.nav.nav--#{$color} .nav__sub-list', ( border-top-color: #{$color}-dark));
+	}
+
+
+

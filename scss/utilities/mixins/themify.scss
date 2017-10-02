@@ -1,0 +1,61 @@
+@mixin themify ($selectors, $values) {
+  @each $theme in $theme-list {
+    @each $selector in $selectors {
+      .theme-#{$theme} #{$selector} {
+        @each $prop, $color in $values {
+          #{$prop} : get-theme-color($theme, $color);
+        }
+      }  
+    }
+  }
+}
+
+@mixin themify-var ( $map : $themes ) {
+
+  @each $theme, $t-var in $map {
+
+    @if index($theme-list, $theme) > 0 {
+
+      .theme-#{$theme} & {
+        
+        $t-primary: map-get($t-var, 'primary') !global;
+        $t-primary-dark: map-get($t-var, 'primary-dark') !global;
+        $t-primary-contrast: map-get($t-var, 'primary-contrast') !global;
+          
+        $t-info: map-get($t-var, 'info') !global;
+        $t-info-dark: map-get($t-var, 'info-dark') !global;
+        $t-info-contrast: map-get($t-var, 'info-contrast') !global;
+          
+        $t-positive: map-get($t-var, 'positive') !global;
+        $t-positive-dark: map-get($t-var, 'positive-dark') !global;
+        $t-positive-contrast: map-get($t-var, 'positive-contrast') !global;
+          
+        $t-negative: map-get($t-var, 'negative') !global;
+        $t-negative-dark: map-get($t-var, 'negative-dark') !global;
+        $t-negative-contrast: map-get($t-var, 'negative-contrast') !global;
+
+        @content;
+     
+        $t-primary: null !global;
+        $t-primary-dark: null !global;
+        $t-primary-contrast: null !global;
+          
+        $t-info: null !global;
+        $t-info-dark: null !global;
+        $t-info-contrast: null !global;
+          
+        $t-positive: null !global;
+        $t-positive-dark: null !global;
+        $t-positive-contrast: null !global;
+          
+        $t-negative: null !global;
+        $t-negative-dark: null !global;
+        $t-negative-contrast: null !global;
+      }
+    }
+  } 
+} 
+
+
+
+

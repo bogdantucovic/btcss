@@ -1,0 +1,130 @@
+/* maksimalan broj kolona tabele */
+$table-columns: 10 !default;
+$table-striped-bg-color: $background-color-dark !default;
+
+
+/**
+ * @param { 0 | 1 } $num
+ * $num:0 parne kolone imaju promenjenu boju pozadine
+ * $num:1 neparne kolone imaju promenjenu boju pozadine
+ */
+@mixin table-striped-v($num:0) {
+	@for $i from 1 through $table-columns {
+		@if $i % 2 == $num {
+			td:nth-child(#{$i}),
+			th:nth-child(#{$i}) {
+				background-color: $table-striped-bg-color;
+			}	
+		}
+	}
+}
+
+/**
+ *  [class^="bg--"] -- iskljucuju se helpers klase kojima se moze promeniti
+ *  boja pozadine
+ */
+@mixin table-striped-h($type:even) {
+	tbody tr:not([class^="bg--"]):nth-child(#{$type}) {
+		background-color: $table-striped-bg-color;
+	}
+}
+
+@mixin head-cell {
+	@extend %h4;
+	font: {
+		variant: small-caps;
+		weight: $weight-bold;
+	}
+	text-transform: capitalize;
+}
+
+.table {
+	border-collapse: collapse;
+	min-width: 100%;
+	
+	thead {
+		tr {
+			border-bottom: 1px solid $border-color;
+		}
+		th {
+			@include head-cell;
+			text-align: left;
+		}
+	}
+
+	td, th {
+		padding: $space-1-4 $space-1-2;
+	}
+
+	tr:not([class^="bg--"]) {
+		transition: 0.25s ease-in-out;
+		&:hover {
+			background-color: $table-striped-bg-color;
+		}
+	}
+
+
+	/**
+	 *  ------------------------------------------------------------
+	 * 											  MODIFIKATORI
+	 *  ------------------------------------------------------------
+	 */
+	&.table--bordered {
+		th,
+		td {
+			border: 1px solid $border-color;
+		}
+	}
+
+	&.table--striped-v-odd {
+		@include table-striped-v;
+	}
+
+	&.table--striped-v-even {
+		@include table-striped-v(1);
+	}
+
+	&.table--striped-h-even {
+		@include table-striped-h;
+	}
+
+	&.table--striped-h-odd {
+		@include table-striped-h(odd);
+	}
+
+	&.table--col-1-head {
+		tbody td:first-child {
+			@include head-cell;
+			border-right: 1px solid $border-color;
+		}
+		thead th:first-child {
+			border-right: 1px solid $border-color;
+		}
+	}
+
+	&.table--center {
+		text-align: center;
+		th { text-align: center; }
+	}
+
+}
+
+@each $color in $THEME_COLORS_BASE {
+
+	@for $i from 1 through $table-columns 	{
+		@include themify(('.table.table--col-#{$i}-#{$color} td:nth-child(#{$i})', 
+			'.table.table--col-#{$i}-#{$color} th:nth-child(#{$i})'), 
+			( background-color: #{$color}, color: #{$color}-contrast )
+		);
+	}
+
+}
+
+
+
+
+
+
+
+
+

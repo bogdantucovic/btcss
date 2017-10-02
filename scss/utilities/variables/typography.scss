@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700|Roboto+Slab:300,400,700| Source+Code+Pro:300,400,700');
+
+$line-height-primary: 1.25 !default;
+
+$font-family-serif: 'Roboto Slab', serif !default;
+$font-family-sans-serif:'Raleway', sans-serif !default;
+$font-family-mono: 'Source Code Pro', monospace !default;
+$font-family-primary: $font-family-sans-serif !default;
+
+$font-size-primary: 1rem !default;
+$font-size-down-ratio: 0.9 !default;
+$font-size-up-ratio: 1.1 !default;
+
+/**
+ *  ako se menjaju fontovi bitno je da zamenski fontovi 
+ *  podrzavaju koriscene weight vrednosti
+ */
+$weight-bold: 700 !default;
+$weight-normal: 400 !default;
+$weight-lighter: 300 !default;
+
+$UNICODE_SPACE: '\00a0';
+
+

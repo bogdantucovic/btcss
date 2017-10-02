@@ -1,0 +1,267 @@
+/* izabran je box-shadow bottom zbog .input--underline elemenata*/
+$input-text-box-shadow: 0 3px 4px -2px;
+
+/**
+ * deljeni stil .input i .textarea element 
+ */
+@mixin input-text {
+	@include border-radius;
+	@include set-font-size(h,5);
+	border: 1px solid $border-color;
+	color: $text-color;
+	font-family: $font-family-primary;
+	padding: $object-padding $object-padding * 2;
+	transition: 0.25s ease-in-out;
+	&:focus {
+		outline: none;
+		@include box-shadow($input-text-box-shadow $border-focus-color);
+	}
+	&[placeholder] {
+		color: $placeholder-color;
+	}
+}
+
+@mixin form__field-space {
+	& + &:not(.form__field-h--checked),
+	& + .btn-group {
+		margin-top: $object-margin;
+	}	
+}
+
+.form {
+	padding: $component-padding;
+}
+
+
+.form__field {
+	@include form__field-space;
+	display: block;
+
+	.label {
+		display: block;
+	}
+
+	.label {
+		.input, .textarea, .form-info {
+			margin-top: $object-margin / 4;
+		}
+	}
+
+	.input + .form-info,
+	.label + .input,
+	.label + .textarea {
+		margin-top: $object-margin / 4;
+	}
+
+	& + .form__field-h,
+	.label--checked + .label--checked {
+		margin-top: $object-margin;
+	}
+
+}	
+
+
+.form__field-h {
+	@include form__field-space;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+	.label:not(.label--checked) {
+		min-width: 100px;
+	}
+
+	.form__field {
+		width: 100%;
+	}
+
+	.label + .form__field {
+		margin-top: $object-margin / 4;
+	}
+
+	& + .form__field {
+		margin-top: $object-margin;
+	}
+
+	.label--checked {
+		margin-top: $object-margin;
+		&:not(.last-child) {
+			margin-right: $object-margin;
+		}
+	}
+
+	@include tablet {
+		flex-wrap: nowrap;
+	}
+
+}
+
+/**
+ *  1. stil necekiranog inputa
+ */
+.checkbox {
+	visibility: hidden;
+  position: absolute; 
+  z-index: -1;
+  & + span {
+  	display: flex;
+  	align-items: center;
+  	&::before { /* 1 */
+	  	content: '';
+		  display: inline-flex;
+		  align-items: center;
+		  justify-content: center;
+		  width: 2em;
+		  height: 2em;
+		  border: 2px solid darken($border-color,10);
+		  margin-right: $space-1-2;
+		  transition: 0.2s ease-in-out;
+  	}
+  }
+}
+
+.radio {
+	@extend .checkbox;
+  & + span::before  {
+  	border-radius: 50%;
+  }
+}
+
+@include themify('.checkbox:checked + span, .radio:checked + span', ( color: positive ));
+@include themify('.checkbox:checked + span::before, .radio:checked + span::before', ( background-color: positive ));
+
+@each $theme in $theme-list {
+	.theme-#{$theme} .checkbox:checked + span::before,
+	.theme-#{$theme} .radio:checked  + span::before {
+		box-shadow: 0 0 0 3px get-theme-color($theme, positive-contrast) inset;
+	}
+}
+
+/**
+ *  1. ocuvanje visine u slucaju da je element prazan
+ */
+.form-info {
+	@extend %u6;
+	transition: 0.25s ease-in-out;
+	&.form-info--is-hidden {
+		visibility: hidden;
+		&::after {
+			content: $UNICODE_SPACE; /* 1 */
+		}
+	}
+}
+
+
+/**
+ *  -----------------------------------------------------------------------------
+ *                                    LABEL
+ *  -----------------------------------------------------------------------------
+ *
+ *  klasa za label tagove svih form elemenata
+ *  .radio i .checkbox elementi koriste klasu i modifikator .label--checked
+ */
+.label {
+	@extend %d5;
+	font-weight: $weight-normal;
+	line-height: $line-height-primary;
+	&.label--checked {
+		cursor: pointer;
+		> span {
+			user-select: none;
+		}
+	}
+}
+
+/**
+ *  -----------------------------------------------------------------------------
+ *                                    TEXTAREA
+ *  -----------------------------------------------------------------------------
+ *
+ * obicno se za textarea koristi resize svojstvo,
+ * ali je jako lose podrzano kod pretrazivaca https://caniuse.com/#search=resize
+ */
+.textarea {
+	@include input-text;
+	margin: 0;
+	min-height: 100px;
+}
+
+
+/**
+ *  -------------------------------------------------------------------
+ *                                INPUT
+ *  -------------------------------------------------------------------
+ */
+
+.input {
+	@include input-text;
+
+	@for $level from 3 through 6 {
+		&.input--h#{$level} {
+			@include object-init($level);
+		}
+	} 
+
+	&[readonly] {
+		background-color: $background-color-dark;
+		pointer-events: none;
+	}
+
+	&.input--underline {
+		border:{
+			radius: 0px;
+			left-color: transparent !important;
+			top-color: transparent;
+			right-color: transparent; 
+		}
+	}
+}
+
+
+/** 
+ *  input--positive klasa se moze koristiti za validne input vrednosti
+ *  input--negative klasa se moze koristiti za nevalidne input vrednosti
+ */
+@each $color in $THEME_COLORS_VALIDITY  { 
+	@include themify('.input.input--#{$color}', ( border-color: #{$color} ));
+}
+
+.input.input--positive:focus {
+	@if $is-box-shadow {
+		@include themify-var {
+			box-shadow: $input-text-box-shadow $t-positive;
+		}
+	}
+}
+.input.input--negative:focus {
+	@if $is-box-shadow {
+		@include themify-var {
+			box-shadow: $input-text-box-shadow $t-negative;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

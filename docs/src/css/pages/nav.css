@@ -1,0 +1,29 @@
+body {
+	padding-bottom: 200px;
+}
+
+#nav {
+	z-index: 999;
+}
+
+#nav-positive {
+	z-index: 998;
+}
+
+#nav-negative {
+	z-index: 997;
+}
+
+#nav-mega {
+	z-index: 996;
+}
+
+
+@media (max-width: 40em) {
+	#navs-relative {
+		left: 0px !important;
+		width: 100% !important;
+		top: 50px;
+	}
+}
+

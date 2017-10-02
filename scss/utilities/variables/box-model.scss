@@ -1,0 +1,26 @@
+$space-primary: $line-height-primary * $font-size-primary !default;
+
+/**
+ *  izvedene promenljive nije preporucljivo menjati jer remete logiku frameworka
+ *  default jedinica $space--* promenljivih je rem
+ *  sve cifre u infiksu ili  sufiksu predstavljaju razlomke
+ */
+$space-1-2: $space-primary / 2;
+$space-1-4: $space-primary / 4;
+$space-3-4: $space-primary * 3 / 4;
+$space-2-1: $space-primary * 2;
+
+$space-primary-em: unit-coverter($space-primary);
+$space-1-2-em: unit-coverter($space-1-2);
+$space-1-4-em: unit-coverter($space-1-4);
+$space-3-4-em: unit-coverter($space-3-4);
+$space-2-1-em: unit-coverter($space-2-1);
+
+$POSITIONS: top, bottom, left, right;
+
+
+
+
+
+
+

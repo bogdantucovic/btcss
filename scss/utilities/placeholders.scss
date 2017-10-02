@@ -1,0 +1,88 @@
+/**
+ *  placeholders za font-size, 
+ *  samo skracuju kucanje pri pozivanju
+ *  za 17 karaktera
+ */
+
+%h1 {
+	@include set-font-size(h,1);
+}
+
+%h2 {
+	@include set-font-size(h,2);
+}
+
+%h3 {
+	@include set-font-size(h,3);
+}
+
+%h4 {
+	@include set-font-size(h,4);
+}
+
+%h5 {
+	@include set-font-size(h,5);
+}
+
+%h6 {
+	@include set-font-size(h,6);
+}
+
+
+
+%u1 {
+	@include set-font-size(u,1);
+}
+
+%u2 {
+	@include set-font-size(u,2);
+}
+
+%u3 {
+	@include set-font-size(u,3);
+}
+
+%u4 {
+	@include set-font-size(u,4);
+}
+
+%u5 {
+	@include set-font-size(u,5);
+}
+
+%u6 {
+	@include set-font-size(u,6);
+}
+
+
+%d1 {
+	@include set-font-size(d,1);
+}
+
+%d2 {
+	@include set-font-size(d,2);
+}
+
+%d3 {
+	@include set-font-size(d,3);
+}
+
+%d4 {
+	@include set-font-size(d,4);
+}
+
+%d5 {
+	@include set-font-size(d,5);
+}
+
+%d6 {
+	@include set-font-size(d,6);
+}
+
+
+
+
+
+
+
+

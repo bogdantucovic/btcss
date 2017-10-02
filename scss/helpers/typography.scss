@@ -1,0 +1,15 @@
+@each $position in left, right, center {
+	.text-align-#{$position} {
+		text-align: $position !important;
+	}
+} 
+
+
+
+
+
+
+
+
+
+

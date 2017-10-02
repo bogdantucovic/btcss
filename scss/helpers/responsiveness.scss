@@ -1,0 +1,17 @@
+.is-hidden-mobile {
+	@include mobile-only {
+		display: none;
+	}
+}
+
+.is-hidden-tablet {
+	@include tablet-only {
+		display: none;
+	}
+}
+
+.is-hidden-desktop {
+	@include desktop-only {
+		display: none;
+	}
+}
